@@ -1,0 +1,11 @@
+<app-header *ngIf="!isAdminPage"></app-header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<app-whatsapp-button *ngIf="!isAdminPage"></app-whatsapp-button>
+<app-footer *ngIf="!isAdminPage"></app-footer>
+
+<app-notification></app-notification>
+<app-confirm-modal></app-confirm-modal>

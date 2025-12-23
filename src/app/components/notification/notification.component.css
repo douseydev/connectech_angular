@@ -1,0 +1,158 @@
+.notification-container {
+    position: fixed;
+    top: 30px;
+    right: -400px;
+    width: 380px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    border-left: 6px solid #ccc;
+}
+
+.notification-container.show {
+    right: 30px;
+}
+
+.notification-content {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+}
+
+.message-wrapper {
+    flex: 1;
+}
+
+.message {
+    margin: 0;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #94a3b8;
+    transition: color 0.2s;
+    display: flex;
+}
+
+.close-btn:hover {
+    color: #475569;
+}
+
+.close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Success State */
+.success {
+    border-left-color: #10b981;
+}
+
+.success .icon-wrapper {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+/* Error State */
+.error {
+    border-left-color: #ef4444;
+}
+
+.error .icon-wrapper {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* Info State */
+.info {
+    border-left-color: #3b82f6;
+}
+
+.info .icon-wrapper {
+    background: #dbeafe;
+    color: #3b82f6;
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 3px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.show .progress-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: inherit;
+    animation: progress 5s linear forwards;
+}
+
+.success.show .progress-bar::after {
+    background: #10b981;
+}
+
+.error.show .progress-bar::after {
+    background: #ef4444;
+}
+
+.info.show .progress-bar::after {
+    background: #3b82f6;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-container {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        top: auto;
+        bottom: -100px;
+    }
+
+    .notification-container.show {
+        bottom: 30px;
+        left: 20px;
+    }
+}

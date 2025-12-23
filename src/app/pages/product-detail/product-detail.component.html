@@ -1,0 +1,176 @@
+<div class="product-detail-page" *ngIf="product">
+  <!-- HEADER SECTION -->
+  <div class="detail-header">
+    <div class="container">
+      <button class="back-btn" (click)="goBack()">← Retour aux produits</button>
+    </div>
+  </div>
+
+  <!-- DETAIL CONTENT -->
+  <div class="container detail-content">
+    <div class="product-detail-grid">
+      <!-- IMAGE SECTION -->
+      <div class="product-image-section">
+        <div class="product-image-large">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.name"
+            class="w-full h-auto object-cover rounded-lg">
+          <span *ngIf="!product.image" class="text-6xl">📦</span>
+        </div>
+      </div>
+
+      <!-- INFO SECTION -->
+      <div class="product-info-section">
+        <h1>{{ product.name }}</h1>
+        <p class="product-category-badge">{{ product.category }}</p>
+
+        <div class="price-section">
+          <span class="product-price-large">{{ product.price | number:'0.0-0' }} FCFA</span>
+        </div>
+
+        <div class="description-section">
+          <h2>Description</h2>
+          <p>{{ product.description }}</p>
+        </div>
+
+
+
+        <!-- CTA BUTTONS -->
+        <div class="cta-buttons">
+          <button class="btn btn-success btn-lg" (click)="contactViaWhatsApp()">
+            💬 Nous contacter via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL & CONTACT SECTION -->
+  <section class="social-contact-section">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Intéressé par ce produit?</h2>
+        <p>Contactez-nous via l'un de ces canaux</p>
+
+        <div class="contact-methods grid grid-cols-4">
+          <!-- WhatsApp -->
+          <div class="contact-method">
+            <a href="https://wa.me/221772516507" target="_blank" class="method-link whatsapp">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.171.824-.336.05-.67.076-1.077-.076a5.057 5.057 0 0 1-2.093-1.348 5.485 5.485 0 0 1-1.347-2.093c-.152-.407-.126-.741-.076-1.077.051-.334.419-1.027.824-1.171.127-.045.244-.069.34-.069.096 0 .19.01.272.032.083.023.167.054.241.144.113.136.634 1.545.688 1.658.053.111.089.24.015.388-.073.148-.11.24-.221.368-.112.128-.235.286-.336.384-.112.11-.23.23-.099.457.13.226.577.95 1.244 1.547.514.457.95.6 1.272.73.322.13.51.112.7.018.191-.094.815-.947.889-1.042.046-.059.13-.102.24-.127.112-.025.228-.02.329.023.1.043 1.642.774 1.733.821.09.046.14.07.168.118.028.047.028.272-.116.677zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                </svg>
+              </div>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-method">
+            <a href="tel:+221772516507" class="method-link phone">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <span>Téléphone</span>
+            </a>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-method">
+            <a href="mailto:contact&#64;connecttech.com" class="method-link email">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <span>Email</span>
+            </a>
+          </div>
+
+          <!-- Facebook -->
+          <div class="contact-method">
+            <a href="https://facebook.com/connecttech" target="_blank" class="method-link facebook">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </div>
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons">
+          <a href="https://facebook.com/connecttech" target="_blank" title="Facebook" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com/connecttech" target="_blank" title="Instagram" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                stroke-width="2" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor"
+                stroke-width="2" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+            </svg>
+          </a>
+          <a href="https://tiktok.com/@connecttech" target="_blank" title="TikTok" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12.525.02c1.31 0 2.591.21 3.792.601V4.65c-.61-.191-1.26-.301-1.921-.301-2.122 0-3.841 1.72-3.841 3.841v3.251h3.402c0 .03 0 .06.01.09.03 0 .06.01.09.01h-.02v3.121h.02c.03 0 .06.01.09.01 0 .03 0 .06-.01.09h-3.412V24h-4.3v-12.839h-3.761v-3.121h3.761V4.191C9.691 1.88 11.571 0 13.881 0c.19 0 .38.01.57.04.1.02.21.05.31.08.1.03.2.07.29.12.09.05.19.11.28.17.09.06.18.13.26.2.08.07.16.15.24.23.07.08.14.17.21.26.2.26.36.56.46.88.1.32.15.66.15 1.01zM19.346 6.17c0 1.25-.41 2.4-1.11 3.32v3.08c1.32-.88 2.5-2.02 3.49-3.39.23-.33.43-.68.61-1.04v-3.3c-.61.35-1.28.61-2.01.76-.32.07-.65.11-.98.11z" />
+            </svg>
+          </a>
+          <a href="https://wa.me/221772516507" target="_blank" title="WhatsApp" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.171.824-.336.05-.67.076-1.077-.076a5.057 5.057 0 0 1-2.093-1.348 5.485 5.485 0 0 1-1.347-2.093c-.152-.407-.126-.741-.076-1.077.051-.334.419-1.027.824-1.171.127-.045.244-.069.34-.069.096 0 .19.01.272.032.083.023.167.054.241.144.113.136.634 1.545.688 1.658.053.111.089.24.015.388-.073.148-.11.24-.221.368-.112.128-.235.286-.336.384-.112.11-.23.23-.099.457.13.226.577.95 1.244 1.547.514.457.95.6 1.272.73.322.13.51.112.7.018.191-.094.815-.947.889-1.042.046-.059.13-.102.24-.127.112-.025.228-.02.329.023.1.043 1.642.774 1.733.821.09.046.14.07.168.118.028.047.028.272-.116.677zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related-section">
+    <div class="container">
+      <h2 class="section-title">Autres produits de la catégorie {{ product.category }}</h2>
+      <p class="section-subtitle">Découvrez d'autres articles similaires</p>
+
+      <div class="grid grid-cols-3">
+        <div class="product-card" *ngFor="let p of allProducts | slice:0:3">
+          <div class="product-image">
+            <img *ngIf="p.image" [src]="p.image" [alt]="p.name" class="w-full h-full object-cover">
+            <span *ngIf="!p.image" class="text-4xl">📦</span>
+          </div>
+          <div class="product-info">
+            <h3>{{ p.name }}</h3>
+            <p class="product-category">{{ p.category }}</p>
+            <div class="product-footer flex-between">
+              <span class="product-price">{{ p.price | number:'0.0-0' }} FCFA</span>
+              <a [routerLink]="['/produit', p.id]" class="btn btn-primary">
+                Détail
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="error-container" *ngIf="!product">
+  <div class="container text-center">
+    <h1>Produit non trouvé</h1>
+    <p>Désolé, ce produit n'existe pas.</p>
+    <button class="btn btn-primary" (click)="goBack()">Retour aux produits</button>
+  </div>
+</div>

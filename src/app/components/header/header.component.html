@@ -1,0 +1,36 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content flex-between">
+      <div class="logo">
+        <a href="/">
+          <img src="assets/images/logo.jpg" alt="ConnectTech" class="logo-img">
+        </a>
+      </div>
+
+      <!-- NAV PUBLIQUE (si pas connecté) -->
+      <nav class="nav" [class.active]="isMenuOpen" *ngIf="!isAdminLoggedIn">
+        <a href="/" (click)="closeMenu()">Accueil</a>
+        <a href="/produits" (click)="closeMenu()">Produits</a>
+        <a href="/contact" (click)="closeMenu()">Contact</a>
+      </nav>
+
+      <div class="header-actions flex gap-md">
+        <!-- BOUTON CONNEXION (si pas connecté) -->
+        <a href="/admin/login" class="btn btn-primary btn-small" *ngIf="!isAdminLoggedIn">
+          🔐 Connexion
+        </a>
+
+        <!-- BOUTON DÉCONNEXION (si connecté) -->
+        <button class="btn btn-secondary btn-small" (click)="logout()" *ngIf="isAdminLoggedIn">
+          Déconnexion
+        </button>
+
+        <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" *ngIf="!isAdminLoggedIn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

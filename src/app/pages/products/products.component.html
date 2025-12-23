@@ -1,0 +1,64 @@
+<div class="products-page">
+  <div class="hero-section">
+    <div class="container">
+      <h1>Nos Produits</h1>
+      <p>Découvrez notre large gamme de produits technologiques de qualité</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="products-container">
+      <!-- SIDEBAR FILTERS -->
+      <aside class="filters-sidebar">
+        <div class="filter-group">
+          <h3>Catégories</h3>
+          <div class="category-list">
+            <button *ngFor="let cat of categories" class="category-btn" [class.active]="selectedCategory === cat"
+              (click)="filterByCategory(cat)">
+              {{ cat }}
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Tri</h3>
+          <select [(ngModel)]="sortBy" (change)="setSortBy(sortBy)" class="sort-select">
+            <option value="recent">Plus récent</option>
+            <option value="price-asc">Prix: croissant</option>
+            <option value="price-desc">Prix: décroissant</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS GRID -->
+      <div class="products-grid-section">
+        <div class="products-count">
+          <p>{{ filteredProducts.length }} produit(s) trouvé(s)</p>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <div class="product-card" *ngFor="let product of filteredProducts">
+            <div class="product-image">
+              <img *ngIf="product.image" [src]="product.image" [alt]="product.name" class="w-full h-full object-cover">
+              <span *ngIf="!product.image" class="text-4xl">📦</span>
+            </div>
+            <div class="product-info">
+              <h3>{{ product.name }}</h3>
+              <p class="product-category line-clamp-2">{{ product.description }}</p>
+              <div class="product-footer flex-col gap-sm text-center">
+                <span class="product-price">{{ product.price | number:'0.0-0' }} FCFA</span>
+                <a [routerLink]="['/produit', product.id]" class="btn btn-primary btn-small w-full">
+                  Voir détail
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-products" *ngIf="filteredProducts.length === 0">
+          <p>Aucun produit trouvé dans cette catégorie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

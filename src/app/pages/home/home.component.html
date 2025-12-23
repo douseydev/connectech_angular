@@ -1,0 +1,80 @@
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content flex flex-responsive gap-lg">
+      <div class="hero-text">
+        <h1>
+          Vente Matériels <span class="text-secondary">Electroniques, Electroménagers</span> et Divers
+        </h1>
+        <p>Votre partenaire de confiance pour tous vos besoins technologiques.<br>
+          <strong>Tel: 77 251 65 07 / 76 520 32 55</strong>
+        </p>
+
+        <div class="hero-buttons flex gap-md flex-responsive">
+          <a href="/produits" class="btn btn-primary">Voir les produits</a>
+          <a href="https://wa.me/221772516507" target="_blank" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align: middle; margin-right: 6px;">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            </svg>
+            Nous contacter
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/images/hero-bg.png" alt="Vente Matériels Electroniques et Electroménagers"
+          class="hero-img-main">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES SECTION -->
+<section class="categories-section bg-gray-light">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nos Catégories</h2>
+      <p>Trouvez exactement ce que vous cherchez</p>
+    </div>
+
+    <div class="grid grid-cols-4">
+      <div class="category-card" *ngFor="let cat of categories">
+
+        <h3>{{ cat.name }}</h3>
+
+        <a href="/produits" class="category-link">Voir plus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Produits en vedette</h2>
+      <p>Notre meilleure sélection pour vous</p>
+    </div>
+
+    <div class="grid grid-cols-3">
+      <div class="product-card" *ngFor="let product of products">
+        <div class="product-image">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.name" class="w-full h-full object-cover">
+          <span *ngIf="!product.image" class="text-4xl">📦</span>
+        </div>
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p class="product-category line-clamp-2">{{ product.description }}</p>
+          <div class="product-footer flex-col gap-sm text-center">
+            <span class="product-price">{{ product.price | number:'0.0-0' }} FCFA</span>
+            <a [routerLink]="['/produit', product.id]" class="btn btn-primary btn-small w-full">
+              Voir détail
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

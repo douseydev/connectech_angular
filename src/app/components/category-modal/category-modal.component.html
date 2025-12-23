@@ -1,0 +1,42 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ isEditMode ? 'Modifier la catégorie' : 'Ajouter une catégorie' }}</h2>
+      <button class="modal-close" (click)="closeModal()">✕</button>
+    </div>
+
+    <form class="modal-form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="name">Nom de la catégorie *</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="formData.name"
+          name="name"
+          placeholder="Ex: Smartphones"
+          required>
+      </div>
+
+      <!-- Icônes supprimées: gestion simplifiée sans icônes -->
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          [(ngModel)]="formData.description"
+          name="description"
+          placeholder="Description de la catégorie..."
+          rows="3"></textarea>
+      </div>
+
+      <!-- URL amicale (slug) retirée -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">
+          {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

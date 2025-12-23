@@ -1,0 +1,17 @@
+main {
+  width: 100%;
+  min-height: calc(100vh - 70px - 400px);
+  background-color: var(--white);
+}
+
+app-header {
+  display: block;
+}
+
+app-whatsapp-button {
+  display: block;
+}
+
+app-footer {
+  display: block;
+}
